@@ -2,8 +2,8 @@ import React from 'react'
 
 const Home = () => {
   return (
-    <div>
-      
+    <div className='bg-slate-500'>
+      <h1>hello</h1>
     </div>
   )
 }
