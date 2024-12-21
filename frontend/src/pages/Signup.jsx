@@ -1,6 +1,7 @@
 import React,{useState} from 'react'
 import { Alert } from "flowbite-react";
 import { useNavigate } from "react-router";
+import OAuth from '../components/Oauth';
 const SignUp = () => {
     const[formData,setFormData] = useState({})
     
@@ -47,9 +48,7 @@ const SignUp = () => {
                         <button onClick={()=>navigate('/login')} className="text-gray-700 font-semibold pb-2 px-4">Log in</button>
                     </div>
                     <div className="flex flex-col space-y-4">
-                        <button className="flex items-center justify-center border rounded-full py-2 px-4 text-gray-700">
-                            <i className="fab fa-google mr-2"></i> Sign up with Google
-                        </button>
+                        <OAuth/>
                     </div>
                     <div className="flex items-center my-6">
                         <hr className="flex-grow border-gray-300" />

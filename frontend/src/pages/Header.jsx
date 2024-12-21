@@ -1,6 +1,7 @@
 import React from 'react'
 import { Avatar, Dropdown } from "flowbite-react";
 import { useNavigate } from "react-router";
+import { Link} from "react-router-dom";
 import { signoutSuccess } from '../redux/userSlice'
 import { useSelector,useDispatch } from 'react-redux';
 const Header = () => {
@@ -29,6 +30,7 @@ const Header = () => {
                             <span className="text-3xl font-serif font-semibold text-center text-slate-700">Omega</span>
     {currentUser? (
      <Dropdown
+     className='bg-slate-600'
      arrowIcon={false}
      inline
      label={
@@ -36,12 +38,18 @@ const Header = () => {
      }
    >
 <Dropdown.Header>
-              <span className='block text-sm uppercase'>{currentUser.username}</span>
+              <span className='block text-sm '>{currentUser.username}</span>
               <span className='block text-sm font-medium truncate'>
                 {currentUser.email}
               </span>
-              <span></span>
             </Dropdown.Header>
+            {currentUser.isAdmin && (
+          <Link to="/users">
+            <Dropdown.Item>
+              Users
+            </Dropdown.Item>
+          </Link>
+        )}
             <Dropdown.Divider />
             <Dropdown.Item onClick={handleSignout} >Sign out</Dropdown.Item>
     </Dropdown>

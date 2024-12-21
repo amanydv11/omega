@@ -5,6 +5,7 @@ import Login from './pages/Login'
 import SignUp from './pages/Signup'
 import { useSelector } from 'react-redux';
 import Header from './pages/Header'
+import AllUsers from './pages/AllUsers'
 const App = () => {
   const {currentUser} = useSelector((state) =>state.user);
   return (
@@ -15,8 +16,7 @@ const App = () => {
         <Route path='/' element={currentUser ? <Home/> : <Navigate to={"/signup"}/>} />
         <Route path='/login' element={currentUser ? <Navigate to={"/"}/> : <Login/> } />
         <Route path='/signup' element={currentUser ? <Navigate to={"/"} /> : <SignUp/>} />
-        
-        
+        <Route path='/users' element={<AllUsers/>} />
       </Routes>
      </BrowserRouter> 
     </div>

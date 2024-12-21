@@ -16,6 +16,10 @@ const userSchema = new mongoose.Schema({
         required:true,
         unique:true
     },
+    isAdmin:{
+        type:Boolean,
+        default:false,
+    },
 },{timestamps:true})
 const User = mongoose.model('User',userSchema)
 export default User;
