@@ -5,6 +5,7 @@ import cors from 'cors'
 import cookieParser from 'cookie-parser'
 import authRoutes from './routes/authRoutes.js'
 import userRoutes from './routes/userRoutes.js'
+import messageRoutes from './routes/messageRoutes.js'
 import path from 'path'
 dotenv.config()
 const app = express();
@@ -20,7 +21,7 @@ const __dirname = path.resolve();
 
 app.use('/api/auth',authRoutes)
 app.use('/api/user',userRoutes)
-
+app.use('/api/message',messageRoutes)
 app.use(express.static(path.join(__dirname,'/frontend/dist')));
 app.get('*',(res,req)=>{
 app.sendFile(path.join(__dirname, 'frontend','dist','index.html'))
