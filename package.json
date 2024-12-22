@@ -1,14 +1,13 @@
 {
-  "name": "backend",
+  "name": "omega",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
   "type": "module",
   "scripts": {
     "dev": "nodemon backend/server.js",
-    "build":"npm install && npm install --prefix frontend && npm run build --prefix frontend",
-    "start":"node backend/server.js"
-
+    "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend",
+    "start": "node backend/server.js"
   },
   "keywords": [],
   "author": "",
