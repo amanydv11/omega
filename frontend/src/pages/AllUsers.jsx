@@ -75,10 +75,10 @@ const[userIdToDelete,setUserIdToDelete] = useState('')
   };
 
   return (
-    <div className="table-auto min-h-screen md:mx-auto pt-2">
+    <div className="table-auto  min-h-screen md:mx-auto pt-4 m-2">
       {currentUser && users.length > 0 ? (
         <>
-          <Table hoverable className="shadow !bg-transparent ">
+          <Table hoverable className=" shadow-md bg-white rounded ">
             <TableHead>
               <TableHeadCell>Date created</TableHeadCell>
               <TableHeadCell>username</TableHeadCell>
