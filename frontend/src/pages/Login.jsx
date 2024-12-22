@@ -3,7 +3,7 @@ import { Alert } from "flowbite-react";
 import {useNavigate } from "react-router-dom";
 import { logInFailure,logInStart,logInSuccess, } from '../redux/userSlice';
 import {useDispatch,useSelector } from "react-redux";
-import OAuth from '../components/Oauth';
+import OAuth from '../components/OAuth';
 const Login = () => {
     const[formData,setFormData] = useState({})
     const {loading,error:errorMessage} =useSelector(state=> state.user);

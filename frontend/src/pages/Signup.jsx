@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import { Alert } from "flowbite-react";
 import { useNavigate } from "react-router";
-import OAuth from '../components/Oauth';
+import OAuth from '../components/OAuth';
 const SignUp = () => {
     const[formData,setFormData] = useState({})
     
