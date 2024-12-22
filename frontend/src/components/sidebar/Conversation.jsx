@@ -12,18 +12,19 @@ const Conversation = ({ conversation, lastIndex }) => {
   return (
     <>
       <div
-        className={`flex gap-2 items-start hover:bg-green-700 rounded py-1 cursor-pointer ${
+        className={`flex gap-2 items-start hover:bg-green-700 rounded p-2 py-1 cursor-pointer ${
           isSelected ? 'bg-green-700' : ''
         }`}
         onClick={() => setSelectedConversation(conversation)}
       >
-        <div className={`avatar ${isOnline ? 'online' : ''}`}>
-        </div>
+        <div className={`${isOnline ? 'online' : ''}`}>
         <div className="flex flex-col flex-1">
           <div className="flex gap-3 justify-between">
-            <p className="font-bold font-serif">{conversation.username}</p>
+            <p className="font-bold text-white font-serif">{conversation.username}</p>
           </div>
         </div>
+        </div>
+       
       </div>
       {!lastIndex && <div className="divider my-0 py-0 h-1 "></div>}
     </>

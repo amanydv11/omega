@@ -12,7 +12,7 @@ const chatClassName = messageFromMe ? "chat-end" : "chat-start"
   return (
   <>
     <div className={`chat ${chatClassName} `} >
-			<div className={`chat-bubble rounded overflow-hidden  pb-2 ${msgBgColor} ${shakeClass}`}>{message.message}</div>
+			<div className={`chat-bubble rounded overflow-hidden  pb-2 ${msgBgColor} ${shakeClass} text-white`}>{message.message}</div>
 
 			<div className='chat-footer opacity-50 text-xs flex gap-1 items-center'>{formattedTime} </div>
 		</div>

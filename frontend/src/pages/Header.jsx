@@ -27,13 +27,13 @@ const Header = () => {
    const dispatch = useDispatch();
   return (
     <header className="flex justify-between items-center">
-                            <span className="text-3xl font-serif font-semibold text-center text-slate-700">Omega</span>
+                            <span className="text-3xl font-serif font-semibold ml-2 text-center text-white">Omega</span>
     {currentUser? (
      <Dropdown
      arrowIcon={false}
      inline
      label={
-       <Avatar className='w-12 h-10' alt='user' img='https://tse3.mm.bing.net/th?id=OIP.HHVUf3TYqncgpJXyCMmxyAHaHa&pid=Api&P=0&h=180' rounded />
+       <Avatar className='mt-2 w-12 h-10' alt='user' img='https://tse3.mm.bing.net/th?id=OIP.HHVUf3TYqncgpJXyCMmxyAHaHa&pid=Api&P=0&h=180' rounded />
      }
    >
 <Dropdown.Header>

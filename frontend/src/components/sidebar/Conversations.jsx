@@ -31,7 +31,7 @@ const Conversations = () => {
   const conversationsArray = Array.isArray(conversation) ? conversation : [];
 
   return (
-    <div className="py-2 flex flex-col overflow-auto">
+    <div className=" py-2 px-4 flex flex-col overflow-auto">
       {conversationsArray.map((conversation, index) => (
         <Conversation
           key={conversation._id}

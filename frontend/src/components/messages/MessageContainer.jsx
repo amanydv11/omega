@@ -36,7 +36,7 @@ const MessageContainer = () => {
 const NoChatSelected =()=>{
     const {currentUser} = useSelector((state) =>state.user);
   return(
-    <div className="flex items-center font-serif justify-center w-full h-full">
+    <div className="flex items-center font-serif justify-center md:h-[350px] w-full h-full">
       <div className="px-4 text-center sm:text-lg ms:text-xl text-white font-semibold flex flex-col items-center gap-2">
         <p className='text-black'>Welcome!!<br/> {currentUser.username} </p>
         <p className='text-black'>Select a chat to start message</p>
