@@ -1,8 +1,6 @@
 import React, { useEffect} from 'react'
 import Messages from './Messages'
 import MessageInput from './MessageInput'
-import { IoIosVideocam } from "react-icons/io";
-import { MdAddCall } from "react-icons/md";
 import { TiMessages } from "react-icons/ti";
 import { useSelector } from 'react-redux';
 import useConversation from '../../zustand/useConversation';
@@ -16,7 +14,7 @@ const MessageContainer = () => {
     return () => setSelectedConversation(null)
   },[setSelectedConversation])
   return (
-    <div className="md:min-w-[400px] flex flex-col border border-gray-600 rounded-r-lg border-l-0 ">
+    <div className="md:min-w-[300px] flex flex-col border border-gray-600 rounded-r-lg border-l-0 ">
       {!selectedConversation ? (
         <NoChatSelected/>
       ):( 
@@ -26,14 +24,7 @@ const MessageContainer = () => {
       <span className='font-serif text-black label-text text-[18px]'>To:</span>
        <span className='text-white'>{selectedConversation?.username}</span>
        </div> 
-        <div className="flex gap-4 cursor-pointer ">
-      <button><IoIosVideocam /></button>
-        <button>
-            <MdAddCall />
-            </button>
-        </div>
         </div> 
-        
         <Messages/>
         
        <MessageInput/>

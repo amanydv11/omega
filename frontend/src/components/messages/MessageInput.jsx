@@ -1,28 +1,30 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import { RiSendPlaneFill } from "react-icons/ri";
-import { toast } from 'react-toastify';
-import useConversation from '../../zustand/useConversation';
+import {GoPaperclip } from "react-icons/go";
+import { toast } from "react-toastify";
+import useConversation from "../../zustand/useConversation";
 
-const Messageinput = () => {
-  const [message, setMessage] = useState('');
-  const { loading, setLoading, messages, setMessages, selectedConversation } = useConversation();
+const MessageInput = () => {
+  const [message, setMessage] = useState("");
+  const { loading, messages, setMessages, selectedConversation } =
+    useConversation();
+  const [file, setFile] = useState(null);
 
   // Handle sending the message
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!message) {
-      return;
+    if (!message && !file) {
+      console.log('can not send emplty files')
     }
 
     try {
-      setLoading(true);
+      const formData = new FormData();
+      if (file) formData.append("file", file);
+      if (message) formData.append("message", message);
 
       const res = await fetch(`/api/message/send/${selectedConversation._id}`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ message }),
+        body: formData,
       });
 
       const data = await res.json();
@@ -32,33 +34,44 @@ const Messageinput = () => {
       }
 
       setMessages([...messages, data]);
-      setMessage(""); // Clear the input field after sending the message
+      setMessage(""); 
+      setFile(null);
     } catch (error) {
       toast.error(error.message);
-    } finally {
-      setLoading(false);
     }
   };
 
-  useEffect(() => {
-    // You can add any effect logic here that you would have placed in useSendMessage
-  }, [selectedConversation, messages]); // Example of dependency array
-
+  const handleFileChange = (e) => {
+    setFile(e.target.files[0]);
+  };
   return (
-    <form onSubmit={handleSubmit}>
-      <div className="w-full relative">
+    <form onSubmit={handleSubmit} className="relative flex items-center">
+      <div className="flex w-full relative">
         <input
           type="text"
-          className="border text-sm rounded-b block w-full p-2.5  bg-gray-700 border-gray-700 text-white"
+          className="border text-sm  block w-full p-2.5 bg-gray-700 border-gray-700 text-white"
           placeholder="Send a message"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
         />
-        <button type="submit" className="absolute inset-y-0 end-0 flex items-center pe-4">
+        <label htmlFor="file-input" className="flex items-center px-4 cursor-pointer bg-gray-700 border-gray-700 text-white border-l">
+          <GoPaperclip size={20} />
+        </label>
+        <input
+          id="file-input"
+          type="file"
+          accept="image/*"
+          className="hidden"
+          onChange={handleFileChange}
+        />
+        <button
+          type="submit"
+          className="flex items-center px-2 bg-blue-500 text-white"
+        >
           {loading ? (
             <div className="loading loading-spinner"></div>
           ) : (
-            <RiSendPlaneFill />
+            <RiSendPlaneFill size={20} />
           )}
         </button>
       </div>
@@ -66,4 +79,4 @@ const Messageinput = () => {
   );
 };
 
-export default Messageinput;
+export default MessageInput;

@@ -58,6 +58,12 @@ const Messages = () => {
         messages.map((message) => (
           <div key={message._id} ref={lastMessageRef}>
             <Message message={message} />
+            {
+              message.file &&(
+                <img src={message.file} alt="attachment"
+                className="w-30 h-30 object-cover" />
+              )
+            }
           </div>
         ))}
     </div>

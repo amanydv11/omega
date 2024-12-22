@@ -30,7 +30,6 @@ const Header = () => {
                             <span className="text-3xl font-serif font-semibold text-center text-slate-700">Omega</span>
     {currentUser? (
      <Dropdown
-     className='bg-slate-600'
      arrowIcon={false}
      inline
      label={
@@ -43,7 +42,7 @@ const Header = () => {
                 {currentUser.email}
               </span>
             </Dropdown.Header>
-            {currentUser.isAdmin && (
+            {currentUser && (
           <Link to="/users">
             <Dropdown.Item>
               Users

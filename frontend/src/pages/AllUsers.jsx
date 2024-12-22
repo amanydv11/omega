@@ -37,7 +37,7 @@ const[userIdToDelete,setUserIdToDelete] = useState('')
         console.log(error.message);
       }
     };
-    if (currentUser.isAdmin) {
+    if (currentUser) {
       fetchUsers();
     }
   }, [currentUser._id]);
@@ -76,14 +76,14 @@ const[userIdToDelete,setUserIdToDelete] = useState('')
 
   return (
     <div className="table-auto min-h-screen md:mx-auto pt-2">
-      {currentUser.isAdmin && users.length > 0 ? (
+      {currentUser && users.length > 0 ? (
         <>
-          <Table hoverable className="shadow">
-            <TableHead className="bg-slate-700">
+          <Table hoverable className="shadow !bg-transparent ">
+            <TableHead>
               <TableHeadCell>Date created</TableHeadCell>
               <TableHeadCell>username</TableHeadCell>
               <TableHeadCell>Email</TableHeadCell>
-              <TableHeadCell>Admin</TableHeadCell>
+            <TableHeadCell>Admin</TableHeadCell>
               <TableHeadCell>Delete</TableHeadCell>
             </TableHead>
             {users.map((user) => (
@@ -121,7 +121,7 @@ const[userIdToDelete,setUserIdToDelete] = useState('')
 <ModalHeader/>
 <ModalBody>
   <div className="m-5 text-center">
-    <HiOutlineExclamationCircle className="h-14 w-14 text-gray-400 dark:text-gray-200 mb-4 mx-auto"/>
+    <HiOutlineExclamationCircle className="h-14 w-14 text-gray-400 mb-4 mx-auto"/>
     <h3 className="mb-5 text-lg text-gray-800">Are you sure you want to delete this user ?</h3>
     <div className="flex justify-center gap-4">
       <Button className="bg-red-500  " color="black" onClick={handleDeleteUser}>Yes, I'm sure</Button>
@@ -131,7 +131,7 @@ const[userIdToDelete,setUserIdToDelete] = useState('')
 </ModalBody>
       </Modal>
    
-   <Button onClick={()=>{navigate('/')}} color="gray">Go Back to home</Button>
+   <Button className="mt-2" onClick={()=>{navigate('/')}} color="gray">Go Back to home</Button>
     </div>
   );
 };

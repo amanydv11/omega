@@ -9,15 +9,18 @@ import AllUsers from './pages/AllUsers'
 const App = () => {
   const {currentUser} = useSelector((state) =>state.user);
   return (
-    <div className='p-4 h-screen items-center justify-center'>
+    <div className=' min-h-screen'>
      <BrowserRouter>
      <Header/>
+     <div className=' min-h-screen flex items-center justify-center'>
      <Routes>
         <Route path='/' element={currentUser ? <Home/> : <Navigate to={"/signup"}/>} />
         <Route path='/login' element={currentUser ? <Navigate to={"/"}/> : <Login/> } />
         <Route path='/signup' element={currentUser ? <Navigate to={"/"} /> : <SignUp/>} />
         <Route path='/users' element={<AllUsers/>} />
       </Routes>
+     </div>
+    
      </BrowserRouter> 
     </div>
   )

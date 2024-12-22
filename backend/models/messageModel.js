@@ -13,8 +13,13 @@ const messageSchema = new mongoose.Schema({
     },
     message:{
         type:String,
-        required:true,
+        required: function () {
+            return !this.file;
+          },
     },
+    file:{
+        type:String,
+    }
 },{timestamps:true})
 
 const Message = mongoose.model("Message",messageSchema)
